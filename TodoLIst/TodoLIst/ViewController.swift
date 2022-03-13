@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // edit button Action Function
     @IBAction func editButtonTab(_ sender: UIBarButtonItem) {
-        // 비어있을 경우만 편집모드 활성화
+        // 비어있지 않을 경우만 편집모드 활성화
         guard !self.checklistItems.isEmpty else { return }
         self.navigationItem.leftBarButtonItem = self.doneButton
         // 테이블 뷰를 편집모드로
