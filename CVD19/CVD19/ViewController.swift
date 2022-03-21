@@ -13,12 +13,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalCaseLabel: UILabel!
     @IBOutlet weak var newCaseLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var labelStackView: UIStackView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //인디케이터의 애니메이션을 API 호출 전에 실행
+        self.indicatorView.startAnimating()
+        // API 호출
         self.fetchCVDOverview(completionHandler: { [weak self] result in
             // 순환참조를 방지하기 위해 [weak self] capturelist를 정의해줌
             guard let self = self else { return } // 일시적으로 self가 strong reference로 만들게 하는 작업
+            // 응답이 오면 컴플리션 핸들러가 호출되므로, 인디케이터  애니메이션을 스탑시키고 숨김(isHidden)
+            self.indicatorView.stopAnimating()
+            self.indicatorView.isHidden = true
+            
+            // 라벨 스택뷰와 파이차트를 보이게 만듬
+            self.labelStackView.isHidden = false
+            self.pieChartView.isHidden = false
+            
+            // 결과가 제네릭이므로 Switch문
             switch result {
             case let .success(result) :
                 //debugPrint("success \(result)")

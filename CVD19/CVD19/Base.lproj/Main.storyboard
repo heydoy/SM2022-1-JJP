@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-fr-JnL">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3kV-fr-JnL">
                                 <rect key="frame" x="24" y="112" width="366" height="58.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Jyc-2d-x9R">
@@ -71,10 +71,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2S-pG-6KU" customClass="PieChartView" customModule="Charts">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2S-pG-6KU" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="24" y="194.5" width="366" height="643.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="h7F-vH-Ll8">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -84,12 +87,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2S-pG-6KU" secondAttribute="trailing" constant="24" id="B90-H8-ITd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="j2S-pG-6KU" secondAttribute="bottom" constant="24" id="DQi-dz-Djz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3kV-fr-JnL" secondAttribute="trailing" constant="24" id="FeA-gb-FGp"/>
+                            <constraint firstItem="h7F-vH-Ll8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QFi-Ew-rTI"/>
                             <constraint firstItem="j2S-pG-6KU" firstAttribute="top" secondItem="3kV-fr-JnL" secondAttribute="bottom" constant="24" id="icY-qT-oOT"/>
                             <constraint firstItem="3kV-fr-JnL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="ofB-yD-8Zp"/>
+                            <constraint firstItem="h7F-vH-Ll8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uup-1M-KM6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oDM-wv-ifA"/>
                     <connections>
+                        <outlet property="indicatorView" destination="h7F-vH-Ll8" id="BRV-90-GLz"/>
+                        <outlet property="labelStackView" destination="3kV-fr-JnL" id="Y0N-pR-iKq"/>
                         <outlet property="newCaseLabel" destination="Lcn-IM-tSe" id="9tz-pm-aak"/>
                         <outlet property="pieChartView" destination="j2S-pG-6KU" id="HWd-Ld-isv"/>
                         <outlet property="totalCaseLabel" destination="Cg2-eX-3mi" id="oWe-vs-RBz"/>
